@@ -1,7 +1,3 @@
-// --- Nuevo: inicio ---
-// Prueba encadenada de los 4 métodos CRUD sobre /usuarios,
-// cada paso espera al anterior para que el orden sea siempre el mismo.
-
 // GET /usuarios -> pide la lista completa de usuarios al servidor y la imprime en consola
 fetch('http://localhost:3000/usuarios')
   .then(res => res.json())
