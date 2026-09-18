@@ -21,8 +21,11 @@ function crearUsuario(req, res) {
     if (!nombre || typeof nombre !== 'string') {
       return res.status(400).json({ error: 'El nombre es obligatorio y debe ser texto' });
     }
-    if (edad === undefined || typeof edad !== 'number') {
+    if (edad === undefined || typeof edad !== 'number' || Number.isNaN(edad)) {
       return res.status(400).json({ error: 'La edad es obligatoria y debe ser un número' });
+    }
+    if (edad < 0) {
+      return res.status(400).json({ error: 'La edad no puede ser negativa' });
     }
 
     const nuevoUsuario = { id: usuarios.length + 1, nombre, edad };
@@ -51,6 +54,9 @@ function actualizarUsuario(req, res) {
 
     if (Object.keys(req.body).length === 0) {
       return res.status(400).json({ error: 'Debes enviar al menos un dato para actualizar' });
+    }
+    if (req.body.edad !== undefined && (typeof req.body.edad !== 'number' || req.body.edad < 0)) {
+      return res.status(400).json({ error: 'La edad debe ser un número mayor o igual a 0' });
     }
 
     Object.assign(usuario, req.body);
