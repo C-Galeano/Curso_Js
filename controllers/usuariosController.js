@@ -150,4 +150,6 @@ async function eliminarUsuario(req, res) {
 // --- Nuevo: fin ---
 
 module.exports = { verInicio, obtenerUsuario, crearUsuario,
-                   listarUsuarios, actualizarUsuario, eliminarUsuario };
+                   listarUsuarios, actualizarUsuario, eliminarUsuario,
+                   // --- Nuevo (sesion 13): se exporta para usarla en /resumen ---
+                   conectar };

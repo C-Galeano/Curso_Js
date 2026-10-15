@@ -9,6 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', rutasUsuarios);
 
+// --- Nuevo: inicio (sesion 13: APIs externas) ---
+const rutasPaises = require('./routes/paises');
+app.use('/', rutasPaises);
+// --- Nuevo: fin ---
+
 // --- Nuevo: inicio (sesion 10: frontend con Bootstrap) ---
 app.use(express.static('public'));
 // --- Nuevo: fin ---
