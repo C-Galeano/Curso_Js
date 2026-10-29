@@ -11,3 +11,14 @@ CREATE TABLE IF NOT EXISTS usuarios (
 INSERT INTO usuarios (nombre, edad) VALUES ('Ana', 20);
 INSERT INTO usuarios (nombre, edad) VALUES ('Luis', 25);
 INSERT INTO usuarios (nombre, edad) VALUES ('Camila', 22);
+
+-- --- Nuevo: inicio (sesion 14: seguridad y autenticacion) ---
+-- Cuentas para iniciar sesion. La contrasena NUNCA se guarda en texto plano:
+-- se guarda el hash que genera bcrypt.
+CREATE TABLE IF NOT EXISTS cuentas (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password_hash VARCHAR(100) NOT NULL,
+  creado_en TIMESTAMP NOT NULL DEFAULT NOW()
+);
+-- --- Nuevo: fin ---
